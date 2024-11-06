@@ -35,7 +35,12 @@ func (m *Dagger) Publish(
 }
 
 func (m *Dagger) Vite2e(ctx context.Context, source *dagger.Directory) (string, error) {
-	return m.Build(source, "build").
+	build := dag.Node(dagger.NodeOpts{Ctr: m.BuildEnv(source)}).
+		Commands().
+		Run(buildCommandToSlice("")).
+		Directory(".")
+	return dag.Container().From("nginx:1.25-alpine").
+		WithDirectory("/app", build).
 		WithExec([]string{"npm", "run", "test:e2e"}).
 		Stdout(ctx)
 }
