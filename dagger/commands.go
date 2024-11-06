@@ -5,9 +5,9 @@ import (
 	"strings"
 )
 
-var DEFDAULT_TEST_CMD = []string{"npm", "run", "test:unit", "run"}
-var DEFAULT_NPM_INSTALL_CMD = []string{"npm", "install"}
-var DEFAULT_BUILD_CMD = []string{"npm", "run", "build"}
+var DEFDAULT_TEST_CMD = []string{"test:unit", "run"}
+var DEFAULT_NPM_INSTALL_CMD = []string{"install"}
+var DEFAULT_BUILD_CMD = []string{"build"}
 
 func getTestCommand() string {
 	return fmt.Sprint(DEFDAULT_TEST_CMD)
