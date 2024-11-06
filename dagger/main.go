@@ -34,7 +34,7 @@ func (m *Dagger) Publish(
 	return address, nil
 }
 
-func (m *Dagger) ViteE2e(ctx context.Context, source *dagger.Directory) (string, error) {
+func (m *Dagger) Vite2e(ctx context.Context, source *dagger.Directory) (string, error) {
 	build := dag.Node(dagger.NodeOpts{Ctr: m.BuildEnv(source)}).
 		Commands().
 		Run(buildCommandToSlice("")).
